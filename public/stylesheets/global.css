@@ -1,0 +1,101 @@
+html {
+    min-height: 100vh;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333;
+    font-family: lucida grande, tahoma, verdana, arial, sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+ul.noStyle {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a:visited {
+    color: unset;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.centered {
+    text-align: center;
+}
+
+.floatR {
+    float: right;
+}
+
+.fontSmaller {
+    font-size: smaller;
+}
+
+.subHeaderDispElem {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.flexRowVertAlign {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexRowTopAlignSpaced {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.flexColLeftAlign {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.flex100 {
+    flex: 1 0 0;
+}
+.flex10Auto {
+    flex: 1 0 auto;
+}
+
+iframe {
+    overflow: hidden;
+}
+
+.margCenter {
+    margin: 0 auto !important;
+}
+.margTop10 {
+    margin-top: 10px;
+}
+.margTop20 {
+    margin-top: 20px;
+}
+.margTop40 {
+    margin-top: 40px;
+}
+.margLeft15 {
+    margin-left: 15px;
+}
+.margLeft25 {
+    margin-left: 25px;
+}
+
+.posRel {
+    position: relative;
+}
