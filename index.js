@@ -41,7 +41,9 @@ const pages = ["index", "contact"];
 
 // Remove what already exists where the static content will go.
 for(const pageStr of pages) {
-    fs.rmSync(`./public/${pageStr}`, { recursive: true, force: true });
+    if(fs.existsSync(`./public/${pageStr}`)) {
+        fs.rmSync(`./public/${pageStr}`, { recursive: true, force: true });
+    }
 }
 
 // Run the function
