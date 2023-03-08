@@ -6,7 +6,7 @@ const server = require("http").Server(app);
 // References
 const ejs = require("ejs");
 var fs = require("fs");
-const convertToStatic = require("ejs-static-converter")
+const { cwd } = require('node:process');
 
 // Declare ejs, JSON formatting and set static files folder.
 app.set("view engine", "ejs");
@@ -46,5 +46,46 @@ for(const pageStr of pages) {
     }
 }
 
+
+// Main function to convert pages to static
+function convertSite(pages) {
+    // For each page given by the user
+    for (var i = 0; i < pages.length; i++) {
+        // Replace any multi-word views that have a '-' with a space
+        var titleName = pages[i].replaceAll("-", " ");
+
+        // Render the .ejs file as a string.
+        ejs.renderFile("./views/" + pages[i].toLowerCase() + ".ejs", (err, str) => {
+
+            handleStaticErrors(err);
+
+            //
+            // Don't create a directory for the index page.
+            // For the rest, create a directory inside the users '/public' directory.
+            if (pages[i] == "index") {
+                fs.writeFileSync(cwd() + "/public/index.html", str, function () {
+                    handleStaticErrors(newErr);
+                });
+            } else {
+                fs.mkdirSync(cwd() + "/public/" + pages[i].toLowerCase());
+                fs.writeFileSync(cwd() + "/public/" + pages[i].toLowerCase() + "/index.html", str, function () {
+                    handleStaticErrors(newErr);
+                });
+            }
+        });
+    }
+}
+
+
+// Handle errors when making a static file.
+function handleStaticErrors(err) {
+    if (err) {
+        console.log(err);
+        return false;
+    }
+    return true;
+}
+
+
 // Run the function
-convertToStatic(pages)
+convertSite(pages)
