@@ -11,7 +11,7 @@ const { cwd } = require('node:process');
 // Declare ejs, JSON formatting and set static files folder.
 app.set("view engine", "ejs");
 app.set("json spaces", 2);
-app.use(express.static("public"));
+app.use(express.static("docs"));
 
 // Home
 app.get("/", (req, res) => {
@@ -32,50 +32,25 @@ app.get("/contact", (req, res) => {
 server.listen(3000);
 
 
-//
-// Convert to static site
-//
-
 // List the names of all .ejs files in the '/views' directory.
 const pages = ["index", "contact"];
-
-// Remove what already exists where the static content will go.
-for(const pageStr of pages) {
-    if(fs.existsSync(`./public/${pageStr}`)) {
-        fs.rmSync(`./public/${pageStr}`, { recursive: true, force: true });
-    }
-}
 
 
 // Main function to convert pages to static
 function convertSite(pages) {
+
     // For each page given by the user
     for (var i = 0; i < pages.length; i++) {
-        // Replace any multi-word views that have a '-' with a space
-        var titleName = pages[i].replaceAll("-", " ");
 
         // Render the .ejs file as a string.
         ejs.renderFile("./views/" + pages[i].toLowerCase() + ".ejs", (err, str) => {
 
             handleStaticErrors(err);
 
-            //
-            // Don't create a directory for the index page.
-            // For the rest, create a directory inside the users '/public' directory.
-            if (pages[i] == "index") {
-                fs.writeFileSync(cwd() + "/public/index.html", str, function () {
-                    handleStaticErrors(newErr);
-                });
-            } else {
-                fs.mkdirSync(cwd() + "/public/" + pages[i].toLowerCase());
-                fs.writeFileSync(cwd() + "/public/" + pages[i].toLowerCase() + "/index.html", str, function () {
-                    handleStaticErrors(newErr);
-                });
-            }
+            fs.writeFileSync(cwd() + `/docs/${pages[i].toLowerCase()}.html`, str);
         });
     }
 }
-
 
 // Handle errors when making a static file.
 function handleStaticErrors(err) {
