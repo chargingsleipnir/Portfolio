@@ -13,20 +13,15 @@ app.set("view engine", "ejs");
 app.set("json spaces", 2);
 app.use(express.static("docs"));
 
-// Home
-app.get("/", (req, res) => {
-    res.redirect("/landing");
-});
+// Redirects to landing
+app.get("/", (req, res) => res.redirect("/landing"));
+app.get("/index", (req, res) => res.redirect("/landing"));
 
 // Landing
-app.get("/landing", (req, res) => {
-    res.render("index");
-});
+app.get("/landing", (req, res) => res.render("index"));
 
 // Contact
-app.get("/contact", (req, res) => {
-    res.render("contact");
-});
+app.get("/contact", (req, res) => res.render("contact"));
 
 // Initialise the server on port 3000.
 server.listen(3000);
