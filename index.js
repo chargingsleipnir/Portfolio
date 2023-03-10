@@ -13,17 +13,6 @@ app.set("view engine", "ejs");
 app.set("json spaces", 2);
 app.use(express.static("docs"));
 
-
-
-// Web Applications
-app.get("/webApps", (req, res) => res.render("webApps"));
-
-// Animations
-app.get("/anims", (req, res) => res.render("anims"));
-
-// Contact
-app.get("/contact", (req, res) => res.render("contact"));
-
 // Initialise the server on port 3000.
 server.listen(3000);
 
