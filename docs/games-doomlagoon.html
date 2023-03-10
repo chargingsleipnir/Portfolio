@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+        <title>OvD | Games</title>
+
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+<link rel="shortcut icon" href="logoOdin.ico" />
+<script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/template.css">
+        <link rel="stylesheet" type="text/css" href="css/pgGames.css">
+
+        <script type="text/javascript" src="js/elementAnimation.js"></script>
+        <script type="text/javascript" src="js/pgGames.js"></script>
+        <script type="text/javascript" src="js/imageMultiLoader.js"></script>
+    </head>
+
+    <!-- Only need to run the Chat copy functionality if on the DoomLagoon page. -->
+    <body  onload="CopyChat.Init();"  >
+
+        <div id="titleBanner">
+    <div class="widthControl flexRowVertAlign">
+        <div id="logoBlock">
+            <a href="index.html"><img width="50px" height="50px" src="images/logo.png" class="margCenter" /></a>
+            <br />
+            <span>Odin von Doom</span>
+        </div>
+        <nav>
+    <ul class="noStyle">
+        <li>
+            <a href="games-doomLagoon.html">
+                <i class="fas fa-2x fa-gamepad"></i>
+                <div>Games</div>
+            </a>
+        </li>
+        <li>
+            <a href="webApps.html">
+                <i class="fas fa-2x fa-globe-americas"></i>
+                <div>Web&nbsp;apps</div>
+            </a>
+        </li>
+        <li>
+            <a href="anims.html">
+                <i class="fas fa-2x fa-film"></i>
+                <div>Animations</div>
+            </a>
+        </li>
+        <li>
+            <a href="contact.html">
+                <i class="far fa-2x fa-envelope"></i>
+                <div>Contact</div>
+            </a>
+        </li>
+    </ul>
+</nav>
+    </div>
+</div>
+
+        <div id="GamePageColumns" class="flexRowTopAlignSpaced">
+
+            <!-- Games navigation -->
+
+            
+
+            <ul class="flexColLeftAlign noStyle flex100">
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-doomLagoon.html" class="innerNav flexRowVertAlign current">
+                            <span class="gameIcon"><img src="images/icons/Dragon.png" /></span>
+                            <span class="margLeft15">Doom Lagoon</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-tornadoom.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Cow.png" /></span>
+                            <span class="margLeft15">Tornadoom</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-flippinOut.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Flipper.png" /></span>
+                            <span class="margLeft15">Flippin&#39; Out</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-frostByte.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Robot.png" /></span>
+                            <span class="margLeft15">Frost Byte</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-ffBattle.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Umaro.png" /></span>
+                            <span class="margLeft15">FF Battle</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-metroid.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Metroid.png" /></span>
+                            <span class="margLeft15">Metroid Hunted</span>
+                        </a>
+                    </li>
+                
+            </ul>
+
+            <!-- Games content -->
+            <div class="content widthControl flex10Auto">
+                <p>Play directly here: <a href="https://doomlagoon.herokuapp.com/" class="inlineLink" target="_blank">Doom Lagoon</a></p>
+
+<p>Or play in iframe here:</p>
+<div class="posRel centred">
+    <iframe id="IFrameDoomLagoon" class="subHeaderDispElem" src="https://doomlagoon.herokuapp.com/" width="970" height="610" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+    <!-- src="http://localhost:8000/" -->
+</div>
+
+<p>Active copy of in-game chat log:</p>
+<ul id="ChatLogCopy" class="noStyle">
+
+</ul>
+
+<p>An MMO ("mini"-multiplayer online) RPG game I built to dabble in server-authoratative gaming.</p>
+<p>Up to 3 players can drop into & out-of battles at any time! (Use multiple browsers to try it out!)</p>
+<p>Allows for local storage or SQL game saves.</p>
+<p>Dev console logs are still active for your interest. (Click a tile, or use the I, J, K, L keys to get data of neighboring cells/tiles)</p>
+            </div>
+
+            <!-- Flexbox placeholder -->
+            <div class="flex100"></div>
+
+        </div>
+
+
+        <!-- // TODO: Return to this when ruffle supports action script 3 -->
+        <!-- <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.addEventListener("load", (event) => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                const container = document.getElementById("SwfPlayerContainer");
+                container.appendChild(player);
+                player.load("externalFiles/ExternalPreloader.swf");
+                //player.load("Assignment 2.swf");
+            });
+        </script>
+        <script type="text/javascript" src="includes/ruffle/ruffle.js"></script> -->
+    </body>
+
+    <footer>Odin von Doom</footer>
+
+</html>

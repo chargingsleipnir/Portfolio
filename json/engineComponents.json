@@ -1,0 +1,111 @@
+[
+    {
+        "title": "JSON model imports (Python export script made for Blender)",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_JSONExporter.jpg",
+                "blurb": "I discovered early on that each vertex could have several different sets of uv coordinates or associated colours based on which face was being drawn, so I set up the exporter to capture all of the data (hence getting vertices\"byMesh\" and \"byFaces\"), which is later reduced by the engine when it parses the JSON model object. I would certainly have prefered to hold the data for each vertex only once, but it just wasn't meant to be!"
+            }
+        ]
+    },
+    {
+        "title": "GUI system (built-in, not HTML overlay)",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_GUIText.jpg",
+                "blurb": "Building a GUI system from scratch was too interesting of a challenge to pass up. What I was most interested in were all of the different styling options given to font systems, alignment and other spacing options in particular, which I decided I could probably only achieve if every character in a given block of text was contained in it's own box."
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_GUIText2.jpg",
+                "blurb": ""
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_GUIUse.jpg",
+                "blurb": "What I greatly enjoyed doing here was, instead of making different kinds of gui objects, making the base object flexible enough to serve different purposes. So it's standard implementation is to act as a static label, but using its \"UpdateMsg\", \"AsButton\", or several \"Fade...\" functions in a given looped call give each object the potential to be very dynamic!"
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_GUIUse2.jpg",
+                "blurb": ""
+            }
+        ]
+    },
+    {
+        "title": "Particles",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_ParticleEffects.jpg",
+                "blurb": "With the particle system, I wanted to acheive directed randomness, so I set up an \"effects\" struct that holds data often as range limits/extremes rather than finite values. The \"colouTop\" and \"colourBtm\" for instance can be the same to acheive a single colour, or different to define a range. The same applies to the aptly named \"range\" variable, which can be zero to see the particles move always in the same defined direction, or up to 180 to expand the conical range and see them move with a random variance from that defined direction."
+            }
+        ]
+    },
+    {
+        "title": "GPU Rendering",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_RenderScene.jpg",
+                "blurb": "As my scenes became more dynamic, my code had to become increasingly flexible, so I group objects that would be drawn similarly, and maybe use the same vertex and fragment shaders. The basic JSON model is all encompassing, but then I've given individual render calls to the debug objects which will never use lighting or textures; and the particle sytems, for which each vertex is updated individually, and the entire system transformed by the model matrix."
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_RenderGUI.jpg",
+                "blurb": "The GUI systems stand alone because they are defined in a 2D space on top of everything else in the scene, and thus, with a very different draw call that sends no matrices to the shaders."
+            }
+        ]
+    },
+    {
+        "title": "Various shading options",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_ShaderStrings.jpg",
+                "blurb": "I have a few custom built shaders that serve specific purposes, such as for the GUI, but for the JSON models in particular, I made this set of strings that could be used based on what properties the model is identified as having."
+            }
+        ]
+    },
+    {
+        "title": "Visual Debug Control",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_DebugObjs.jpg",
+                "blurb": "Of course any decent engine should provide solid debug support, so I spent some good time building the visuals for the various debug elements, whose usefulness cannot be understated. As each model comes through the scene manager, it checks for different components like the \"collider\", and creates visuals for it in the background."
+            }
+        ]
+    },
+    {
+        "title": "Flexible key and mouse input system",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_InputKeyCreation.jpg",
+                "blurb": "JavaScript already makes key and mouse input very easy to get started with, but I still wanted greater control, so I mapped out the key codes and created input objects for the engine user, allowing for the easy ability to assign any given key, check when it's in use, stop it at any point desired (even while being held), and assign \"up\" and \"down\" callbacks at any time."
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_InputKeyUse.jpg",
+                "blurb": ""
+            }
+        ]
+    },
+    {
+        "title": "Scene management",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_SceneMgmt.jpg",
+                "blurb": "I set up scenes not only to easily divvy up resources, but to easily move from one to the next, seeing that every scene is shutdown properly and started properly."
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_SceneUse.jpg",
+                "blurb": "Thus, every scene has it's \"Start\", \"Update\", and \"End\" functions."
+            }
+        ]
+    },
+    {
+        "title": "Mostly Sphere-Swept Volumes for collisions",
+        "block": [
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_CollisionSample.jpg",
+                "blurb": "I read up on sphere-swept volumes for collisions, and they seemed like the most appropriate shapes to use for the game I wanted to make, but more than that, it was a very good learning experience to use something different than the standard box colliders. My engine is using spheres, capsules, and donuts to check one another. The \"donut\" is my own creation - essentially a sphere that can cover any point on a plane, within a given radius from its main position."
+            },
+            {
+                "imgSrc": "games/engine/codeSampleImages/code_CollisionUse.jpg",
+                "blurb": "Perfect for any game developer with a flying saucer!"
+            }
+        ]
+    }
+]

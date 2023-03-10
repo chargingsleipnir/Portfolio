@@ -1,0 +1,60 @@
+precision mediump float;
+
+uniform samplerCube u_SamplerCube;
+varying vec4 v_Pos;
+varying vec3 v_TrfmNorm;
+uniform vec3 u_DiffColWeight;
+uniform vec3 u_SpecCol;
+uniform float u_SpecInt;
+
+uniform float u_AmbBright;
+uniform float u_DirBright;
+uniform vec3 u_DirDir;
+uniform float u_PntBright;
+uniform vec3 u_PntPos;
+
+uniform vec3 u_CamPos;
+uniform vec4 u_Tint;
+
+void main() {
+	vec4 texCubeColour = textureCube(u_SamplerCube, v_TrfmNorm);
+	vec3 normal = normalize(v_TrfmNorm);
+	float dirWeight = 0.0;
+	float pntWeight = 0.0;
+
+	vec3 specColWeight = vec3(0.0, 0.0, 0.0);
+	float specBright = 0.0;
+
+	vec3 ambCol = u_DiffColWeight * u_AmbBright;
+	vec3 dirCol = vec3(0.0, 0.0, 0.0);
+	vec3 pntCol = vec3(0.0, 0.0, 0.0);
+
+	vec3 eyeDir = normalize(u_CamPos - v_Pos.xyz);
+	vec3 reflDir = vec3(0.0, 0.0, 0.0);
+
+	if(u_DirBright > 0.0) {
+		reflDir = reflect(-u_DirDir, normal);
+		specBright = pow(max(dot(reflDir, eyeDir), 0.0), u_SpecInt);
+		specColWeight = u_SpecCol * specBright;
+
+		dirWeight = max(dot(normal, u_DirDir), 0.0) * u_DirBright;
+
+		dirCol = (u_DiffColWeight * dirWeight) + (specColWeight * dirWeight);
+	}
+
+	if(u_PntBright > 0.0) {
+		vec3 pntDir = normalize(u_PntPos - v_Pos.xyz);
+		reflDir = reflect(-pntDir, normal);
+		specBright = pow(max(dot(reflDir, eyeDir), 0.0), u_SpecInt);
+		specColWeight = u_SpecCol * specBright;
+
+		pntWeight = max(dot(normal, pntDir), 0.0) * u_PntBright;
+
+		pntCol = (u_DiffColWeight * pntWeight) + (specColWeight * pntWeight);
+	}
+
+	vec3 v_LightWeight = ambCol + dirCol + pntCol;
+	// Skybox is having an issue with the light weighting, not sure what exactly is going wrong. This custom shader is just a copy of the one that's automatically produced, but less the light weighting below.
+	// gl_FragColor = vec4((u_Tint.rgb + texCubeColour.rgb) * v_LightWeight, u_Tint.a);
+	gl_FragColor = vec4((u_Tint.rgb + texCubeColour.rgb), u_Tint.a);
+}

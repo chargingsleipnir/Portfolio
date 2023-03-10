@@ -13,12 +13,13 @@ app.set("view engine", "ejs");
 app.set("json spaces", 2);
 app.use(express.static("docs"));
 
-// Redirects to landing
-app.get("/", (req, res) => res.redirect("/landing"));
-app.get("/index", (req, res) => res.redirect("/landing"));
 
-// Landing
-app.get("/landing", (req, res) => res.render("index"));
+
+// Web Applications
+app.get("/webApps", (req, res) => res.render("webApps"));
+
+// Animations
+app.get("/anims", (req, res) => res.render("anims"));
 
 // Contact
 app.get("/contact", (req, res) => res.render("contact"));
@@ -26,36 +27,63 @@ app.get("/contact", (req, res) => res.render("contact"));
 // Initialise the server on port 3000.
 server.listen(3000);
 
+// Data for tornadoom:
+const engineCodeFiledata = fs.readFileSync(`./json/engineComponents.json`);
+const engineCodeJson = JSON.parse(engineCodeFiledata);
 
-// List the names of all .ejs files in the '/views' directory.
-const pages = ["index", "contact"];
+// List that clearly defines the conversion process, denoting that the ejs is comprised of, and when static content should be made of it.
+const conversionObjects = [
+    {
+        ejs: { file: "index", data: {} },
+        static: "index"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "metroid", gamePgData: undefined } },
+        static: "games-metroid"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "ffBattle", gamePgData: undefined } },
+        static: "games-ffBattle"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "frostByte", gamePgData: undefined } },
+        static: "games-frostByte"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "flippinOut", gamePgData: undefined } },
+        static: "games-flippinOut"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "tornadoom", gamePgData: engineCodeJson } },
+        static: "games-tornadoom"
+    },
+    {
+        ejs: { file: "games", data: { gamePg: "doomLagoon", gamePgData: undefined } },
+        static: "games-doomLagoon"
+    },
+    {
+        ejs: { file: "webApps", data: {} },
+        static: "webApps"
+    },
+    {
+        ejs: { file: "anims", data: {} },
+        static: "anims"
+    },    
+    {
+        ejs: { file: "contact", data: {} },
+        static: "contact"
+    }    
+];
 
+// For each page given by the user
+for (const obj of conversionObjects) {
 
-// Main function to convert pages to static
-function convertSite(pages) {
+    // Render the .ejs file as a string.
+    ejs.renderFile(`./views/${obj.ejs.file.toLowerCase()}.ejs`, obj.ejs.data, (err, str) => {
 
-    // For each page given by the user
-    for (var i = 0; i < pages.length; i++) {
+        if (err) console.error(err);
 
-        // Render the .ejs file as a string.
-        ejs.renderFile("./views/" + pages[i].toLowerCase() + ".ejs", (err, str) => {
-
-            handleStaticErrors(err);
-
-            fs.writeFileSync(cwd() + `/docs/${pages[i].toLowerCase()}.html`, str);
-        });
-    }
+        // ! Might need to handle folder ceration here, if it's not innately handled.
+        fs.writeFileSync(cwd() + `/docs/${obj.static.toLowerCase()}.html`, str);
+    });
 }
-
-// Handle errors when making a static file.
-function handleStaticErrors(err) {
-    if (err) {
-        console.log(err);
-        return false;
-    }
-    return true;
-}
-
-
-// Run the function
-convertSite(pages)

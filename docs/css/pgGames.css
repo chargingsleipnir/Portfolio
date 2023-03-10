@@ -8,9 +8,9 @@
     background-color: #444444;
     padding: 5px;
 }
-.sliderList li:hover {
+/* .sliderList li:hover {
     cursor: pointer;
-}
+} */
 
 .engineDescWindow {
     /*display: none;

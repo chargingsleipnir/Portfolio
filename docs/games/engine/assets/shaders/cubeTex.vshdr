@@ -1,0 +1,13 @@
+attribute vec3 a_Pos;
+attribute vec3 a_Norm;
+varying vec4 v_Pos;
+varying vec3 v_TrfmNorm;
+uniform mat4 u_MtxM;
+uniform mat4 u_MtxVP;
+uniform mat3 u_MtxNorm;
+void main() {
+	gl_PointSize = 5.0;
+	v_Pos = u_MtxM * vec4(a_Pos, 1.0);
+	gl_Position = u_MtxVP * v_Pos;
+	v_TrfmNorm = u_MtxNorm * a_Norm;
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+        <title>OvD | Games</title>
+
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+<link rel="shortcut icon" href="logoOdin.ico" />
+<script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/template.css">
+        <link rel="stylesheet" type="text/css" href="css/pgGames.css">
+
+        <script type="text/javascript" src="js/elementAnimation.js"></script>
+        <script type="text/javascript" src="js/pgGames.js"></script>
+        <script type="text/javascript" src="js/imageMultiLoader.js"></script>
+    </head>
+
+    <!-- Only need to run the Chat copy functionality if on the DoomLagoon page. -->
+    <body  >
+
+        <div id="titleBanner">
+    <div class="widthControl flexRowVertAlign">
+        <div id="logoBlock">
+            <a href="index.html"><img width="50px" height="50px" src="images/logo.png" class="margCenter" /></a>
+            <br />
+            <span>Odin von Doom</span>
+        </div>
+        <nav>
+    <ul class="noStyle">
+        <li>
+            <a href="games-doomLagoon.html">
+                <i class="fas fa-2x fa-gamepad"></i>
+                <div>Games</div>
+            </a>
+        </li>
+        <li>
+            <a href="webApps.html">
+                <i class="fas fa-2x fa-globe-americas"></i>
+                <div>Web&nbsp;apps</div>
+            </a>
+        </li>
+        <li>
+            <a href="anims.html">
+                <i class="fas fa-2x fa-film"></i>
+                <div>Animations</div>
+            </a>
+        </li>
+        <li>
+            <a href="contact.html">
+                <i class="far fa-2x fa-envelope"></i>
+                <div>Contact</div>
+            </a>
+        </li>
+    </ul>
+</nav>
+    </div>
+</div>
+
+        <div id="GamePageColumns" class="flexRowTopAlignSpaced">
+
+            <!-- Games navigation -->
+
+            
+
+            <ul class="flexColLeftAlign noStyle flex100">
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-doomLagoon.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Dragon.png" /></span>
+                            <span class="margLeft15">Doom Lagoon</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-tornadoom.html" class="innerNav flexRowVertAlign current">
+                            <span class="gameIcon"><img src="images/icons/Cow.png" /></span>
+                            <span class="margLeft15">Tornadoom</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-flippinOut.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Flipper.png" /></span>
+                            <span class="margLeft15">Flippin&#39; Out</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-frostByte.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Robot.png" /></span>
+                            <span class="margLeft15">Frost Byte</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-ffBattle.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Umaro.png" /></span>
+                            <span class="margLeft15">FF Battle</span>
+                        </a>
+                    </li>
+                
+                    <li class="margTop10 margLeft25">
+                        <a href="games-metroid.html" class="innerNav flexRowVertAlign ">
+                            <span class="gameIcon"><img src="images/icons/Metroid.png" /></span>
+                            <span class="margLeft15">Metroid Hunted</span>
+                        </a>
+                    </li>
+                
+            </ul>
+
+            <!-- Games content -->
+            <div class="content widthControl flex10Auto">
+                <div>
+    <div class="centred">
+        <iframe class="subHeaderDispElem" src="./games/tornadoom/index.html" width="800" height="800" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+    </div>
+    <iframe class="subHeaderDispElem" src="https://www.youtube.com/embed/yxV5FFod7A8" width="800" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+</div>
+
+<br><strong>About Tornadoom:</strong><br>
+<p>
+    Tornadoom is more-or-less a tech demo, meant to show off some of the features of Engine von Doom.
+    It's a fun little cow-chuckin' romp that'll give you a good laugh if you're sense of humour is as twisted as mine!
+</p>
+
+<br><strong>About the Engine:</strong><br>
+<p>
+    Tornadoom is built with a webGL engine of my own design and build.<br>
+    Notable features include (click section to expand):
+</p>
+
+<ul class="sliderList noStyle">
+    
+        <li>
+            <div>JSON model imports (Python export script made for Blender)</div>
+            <div class="engineDescWindow">
+                
+                    <p>I discovered early on that each vertex could have several different sets of uv coordinates or associated colours based on which face was being drawn, so I set up the exporter to capture all of the data (hence getting vertices&#34;byMesh&#34; and &#34;byFaces&#34;), which is later reduced by the engine when it parses the JSON model object. I would certainly have prefered to hold the data for each vertex only once, but it just wasn&#39;t meant to be!</p>
+                    <img src="games/engine/codeSampleImages/code_JSONExporter.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>GUI system (built-in, not HTML overlay)</div>
+            <div class="engineDescWindow">
+                
+                    <p>Building a GUI system from scratch was too interesting of a challenge to pass up. What I was most interested in were all of the different styling options given to font systems, alignment and other spacing options in particular, which I decided I could probably only achieve if every character in a given block of text was contained in it&#39;s own box.</p>
+                    <img src="games/engine/codeSampleImages/code_GUIText.jpg" />
+                
+                    <p></p>
+                    <img src="games/engine/codeSampleImages/code_GUIText2.jpg" />
+                
+                    <p>What I greatly enjoyed doing here was, instead of making different kinds of gui objects, making the base object flexible enough to serve different purposes. So it&#39;s standard implementation is to act as a static label, but using its &#34;UpdateMsg&#34;, &#34;AsButton&#34;, or several &#34;Fade...&#34; functions in a given looped call give each object the potential to be very dynamic!</p>
+                    <img src="games/engine/codeSampleImages/code_GUIUse.jpg" />
+                
+                    <p></p>
+                    <img src="games/engine/codeSampleImages/code_GUIUse2.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Particles</div>
+            <div class="engineDescWindow">
+                
+                    <p>With the particle system, I wanted to acheive directed randomness, so I set up an &#34;effects&#34; struct that holds data often as range limits/extremes rather than finite values. The &#34;colouTop&#34; and &#34;colourBtm&#34; for instance can be the same to acheive a single colour, or different to define a range. The same applies to the aptly named &#34;range&#34; variable, which can be zero to see the particles move always in the same defined direction, or up to 180 to expand the conical range and see them move with a random variance from that defined direction.</p>
+                    <img src="games/engine/codeSampleImages/code_ParticleEffects.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>GPU Rendering</div>
+            <div class="engineDescWindow">
+                
+                    <p>As my scenes became more dynamic, my code had to become increasingly flexible, so I group objects that would be drawn similarly, and maybe use the same vertex and fragment shaders. The basic JSON model is all encompassing, but then I&#39;ve given individual render calls to the debug objects which will never use lighting or textures; and the particle sytems, for which each vertex is updated individually, and the entire system transformed by the model matrix.</p>
+                    <img src="games/engine/codeSampleImages/code_RenderScene.jpg" />
+                
+                    <p>The GUI systems stand alone because they are defined in a 2D space on top of everything else in the scene, and thus, with a very different draw call that sends no matrices to the shaders.</p>
+                    <img src="games/engine/codeSampleImages/code_RenderGUI.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Various shading options</div>
+            <div class="engineDescWindow">
+                
+                    <p>I have a few custom built shaders that serve specific purposes, such as for the GUI, but for the JSON models in particular, I made this set of strings that could be used based on what properties the model is identified as having.</p>
+                    <img src="games/engine/codeSampleImages/code_ShaderStrings.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Visual Debug Control</div>
+            <div class="engineDescWindow">
+                
+                    <p>Of course any decent engine should provide solid debug support, so I spent some good time building the visuals for the various debug elements, whose usefulness cannot be understated. As each model comes through the scene manager, it checks for different components like the &#34;collider&#34;, and creates visuals for it in the background.</p>
+                    <img src="games/engine/codeSampleImages/code_DebugObjs.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Flexible key and mouse input system</div>
+            <div class="engineDescWindow">
+                
+                    <p>JavaScript already makes key and mouse input very easy to get started with, but I still wanted greater control, so I mapped out the key codes and created input objects for the engine user, allowing for the easy ability to assign any given key, check when it&#39;s in use, stop it at any point desired (even while being held), and assign &#34;up&#34; and &#34;down&#34; callbacks at any time.</p>
+                    <img src="games/engine/codeSampleImages/code_InputKeyCreation.jpg" />
+                
+                    <p></p>
+                    <img src="games/engine/codeSampleImages/code_InputKeyUse.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Scene management</div>
+            <div class="engineDescWindow">
+                
+                    <p>I set up scenes not only to easily divvy up resources, but to easily move from one to the next, seeing that every scene is shutdown properly and started properly.</p>
+                    <img src="games/engine/codeSampleImages/code_SceneMgmt.jpg" />
+                
+                    <p>Thus, every scene has it&#39;s &#34;Start&#34;, &#34;Update&#34;, and &#34;End&#34; functions.</p>
+                    <img src="games/engine/codeSampleImages/code_SceneUse.jpg" />
+                
+            </div>
+        </li>
+    
+        <li>
+            <div>Mostly Sphere-Swept Volumes for collisions</div>
+            <div class="engineDescWindow">
+                
+                    <p>I read up on sphere-swept volumes for collisions, and they seemed like the most appropriate shapes to use for the game I wanted to make, but more than that, it was a very good learning experience to use something different than the standard box colliders. My engine is using spheres, capsules, and donuts to check one another. The &#34;donut&#34; is my own creation - essentially a sphere that can cover any point on a plane, within a given radius from its main position.</p>
+                    <img src="games/engine/codeSampleImages/code_CollisionSample.jpg" />
+                
+                    <p>Perfect for any game developer with a flying saucer!</p>
+                    <img src="games/engine/codeSampleImages/code_CollisionUse.jpg" />
+                
+            </div>
+        </li>
+    
+</ul>
+            </div>
+
+            <!-- Flexbox placeholder -->
+            <div class="flex100"></div>
+
+        </div>
+
+
+        <!-- // TODO: Return to this when ruffle supports action script 3 -->
+        <!-- <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.addEventListener("load", (event) => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                const container = document.getElementById("SwfPlayerContainer");
+                container.appendChild(player);
+                player.load("externalFiles/ExternalPreloader.swf");
+                //player.load("Assignment 2.swf");
+            });
+        </script>
+        <script type="text/javascript" src="includes/ruffle/ruffle.js"></script> -->
+    </body>
+
+    <footer>Odin von Doom</footer>
+
+</html>

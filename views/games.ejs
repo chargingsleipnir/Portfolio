@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head/globalMeta'); %>
+
+        <title>OvD | Games</title>
+
+        <%- include('./head/globalLinks'); %>
+
+        <link rel="stylesheet" type="text/css" href="css/template.css">
+        <link rel="stylesheet" type="text/css" href="css/pgGames.css">
+
+        <script type="text/javascript" src="js/elementAnimation.js"></script>
+        <script type="text/javascript" src="js/pgGames.js"></script>
+        <script type="text/javascript" src="js/imageMultiLoader.js"></script>
+    </head>
+
+    <!-- Only need to run the Chat copy functionality if on the DoomLagoon page. -->
+    <body <% if (gamePg == "doomLagoon") { %> onload="CopyChat.Init();" <% } %> >
+
+        <%- include('./partials/titleBanner'); %>
+
+        <div id="GamePageColumns" class="flexRowTopAlignSpaced">
+
+            <!-- Games navigation -->
+
+            <%
+            const gamePgNames = ['metroid', 'ffBattle', 'frostByte', 'flippinOut', 'tornadoom', 'doomLagoon'];
+            const gameTabNames = ['Metroid Hunted', 'FF Battle', 'Frost Byte', 'Flippin\' Out', 'Tornadoom', 'Doom Lagoon'];
+            const gameIcons = ['Metroid', 'Umaro', 'Robot', 'Flipper', 'Cow', 'Dragon'];
+            %>
+
+            <ul class="flexColLeftAlign noStyle flex100">
+                <% for(var i = gamePgNames.length - 1; i > -1; i--) { %>
+                    <li class="margTop10 margLeft25">
+                        <a href="games-<%= gamePgNames[i] %>.html" class="innerNav flexRowVertAlign <%= gamePgNames[i] == gamePg ? 'current' : '' %>">
+                            <span class="gameIcon"><img src="images/icons/<%= gameIcons[i] %>.png" /></span>
+                            <span class="margLeft15"><%= gameTabNames[i] %></span>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+
+            <!-- Games content -->
+            <div class="content widthControl flex10Auto">
+                <%- include('./gamePages/' + gamePg, { gamePgData }); %>
+            </div>
+
+            <!-- Flexbox placeholder -->
+            <div class="flex100"></div>
+
+        </div>
+
+
+        <!-- // TODO: Return to this when ruffle supports action script 3 -->
+        <!-- <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.addEventListener("load", (event) => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                const container = document.getElementById("SwfPlayerContainer");
+                container.appendChild(player);
+                player.load("externalFiles/ExternalPreloader.swf");
+                //player.load("Assignment 2.swf");
+            });
+        </script>
+        <script type="text/javascript" src="includes/ruffle/ruffle.js"></script> -->
+    </body>
+
+    <%- include('footer'); %>
+
+</html>
