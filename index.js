@@ -79,11 +79,11 @@ const conversionObjects = [
 for (const obj of conversionObjects) {
 
     // Render the .ejs file as a string.
-    ejs.renderFile(`./views/${obj.ejs.file.toLowerCase()}.ejs`, obj.ejs.data, (err, str) => {
+    ejs.renderFile(`./views/${obj.ejs.file}.ejs`, obj.ejs.data, (err, str) => {
 
         if (err) console.error(err);
 
         // ! Might need to handle folder ceration here, if it's not innately handled.
-        fs.writeFileSync(cwd() + `/docs/${obj.static.toLowerCase()}.html`, str);
+        fs.writeFileSync(cwd() + `/docs/${obj.static}.html`, str);
     });
 }
